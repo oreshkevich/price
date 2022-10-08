@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styels.min.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <main>
+    <section class="car">
+      <div class="container">
+
+
+        <h1 class="car__title">Рассчитайте стоимость автомобиля в лизинг</h1>
+        <div class="car__cost">
+          <!-- <form class="car__form form" oninput="result.value=parseInt(cont.value)"> -->
+          <form class="car__form form">
+            <div class="form__wrap">
+              <label for="cont" class="form__count">Стоимость автомобиля</label>
+              <div class="form__output">
+                <input type="text" maxlength="7" value="3 300 000" class="form__result" name="result" id="input-cont">
+                <span class="form__span">
+                  <img class="form__img" src="./img/rub.svg" alt="rub">
+                </span>
+                <input type="range" id="cont" name="cont" value="3000000" min="1000000" max="6000000" step="1"
+                  class="form__progress  progress ">
+              </div>
+
+            </div>
+            <div class="form__wrap">
+              <label for="percent" class="form__count">Первоначальный взнос</label>
+              <div class="form__output">
+                <div class="form__item">
+                  <input type="text" maxlength="7" value="420 000" class="form__result form__result_input" name="result"
+                    id="input-percent">
+
+                  <span class="form__span">
+                    <img class="form__img" src="./img/rub.svg" alt="rub">
+                  </span>
+                </div>
+                <span class="form__span form__span_percent ">
+                  <span class="form__span-js">13</span><span>%</span>
+                </span>
+
+                <input type="range" id="percent" name="cont" value="30" min="10" max="60" step="1"
+                  class="form__progress  progress progress-two">
+              </div>
+
+            </div>
+            <div class="form__wrap">
+              <label for="month" class="form__count">Срок лизинга</label>
+              <div class="form__output">
+                <input type="text" maxlength="2" value="60" class="form__result" name="result" id="input-month">
+                <span class="form__span form__span_percent">
+                  мес.
+                </span>
+                <input type="range" id="month" name="cont" value="25" min="1" max="60" step="1"
+                  class="form__progress  progress progress-three">
+              </div>
+
+            </div>
+
+          </form>
+          <div class="car__sum sum">
+            <div class="sum__wrap">
+              <div class="sum__item">Сумма договора лизинга
+
+                <p class="sum__span">4 467 313 <span class="sum__rub">₽</span></p>
+
+              </div>
+            </div>
+            <div class="sum__wrap">
+              <div class="sum__item">Ежемесячный платеж от
+
+                <p class="sum__span">114 455 <span class="sum__rub">₽</span></p>
+
+              </div>
+            </div>
+            <div class="sum__wrap">
+              <!-- <button class="button button-market" disabled>Оставить заявку</button> -->
+              <button class="button button-market">Оставить заявку</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
