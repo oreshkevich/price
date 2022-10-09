@@ -31,6 +31,9 @@
   }
 }
 @media (max-width: 1119px) {
+  .car {
+    padding-top: 64px;
+  }
   .container {
     max-width: 726px;
   }
@@ -53,9 +56,8 @@
     padding-bottom: 6px;
   }
   .sum__wrap {
-    // min-width: 369px;
     min-width: 275px;
-    margin-bottom: 33px;
+    margin-bottom: 24px;
   }
   .button-market {
     padding: 16px 50px;
@@ -76,9 +78,16 @@
     font-size: 22px;
     line-height: 20px;
   }
-  .sum__span {
+  .sum__span,
+  .sum__total {
     font-size: 22px;
     line-height: 20px;
+  }
+  .sum__total {
+    max-width: 113px;
+  }
+  .sum__rub_month {
+    margin-left: -45px;
   }
   .sum__item {
     font-size: 14px;
@@ -124,7 +133,7 @@
     padding-top: 3px;
   }
   .sum__wrap {
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
   .button-market {
     padding: 19px 48px;

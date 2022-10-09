@@ -152,14 +152,19 @@ input {
 }
 
 .sum__span {
-  padding-top: 8px;
+  margin-left: -18px;
   font-family: 'Nekst-Black';
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
   color: #333333;
 }
-
+.sum__rub_month {
+  margin-left: -66px;
+}
+// .sum__span {
+//   margin-left: -49px;
+// }
 .car__sum {
   display: flex;
   justify-content: space-between;
@@ -205,4 +210,16 @@ input[type='range']::-webkit-slider-thumb:hover {
 }
 input[type='range']::-webkit-slider-thumb:active {
   transform: scale(1);
+}
+
+.sum__total {
+  max-width: 258px;
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  border: 0px solid #ced4da;
+  font-family: 'Nekst-Black';
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 90%;
+  color: #333;
 }

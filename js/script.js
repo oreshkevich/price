@@ -77,3 +77,52 @@ inputCount.addEventListener('keydown', function pressed(event) {
     event.preventDefault();
   }
 });
+
+function sumLeasing() {}
+
+let emptyField = false;
+const form = document.querySelector('.car__cost');
+const formUrl =
+  'https://test-form-a53f8-default-rtdb.europe-west1.firebasedatabase.app/men.json';
+
+form.addEventListener('submit', (event) => {
+  const formData = {};
+
+  event.preventDefault();
+
+  for (let { name, value } of form.elements) {
+    if (name) {
+      value = value.trim();
+      formData[name] = value;
+
+      if (value == '') {
+        emptyField = true;
+      }
+    }
+  }
+
+  console.log(formData);
+  if (emptyField) {
+    alert('The form is filled out incorrectly!');
+  } else {
+    fetch(formUrl, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          return response.json();
+        } else {
+          throw new Error(response.status);
+        }
+      })
+      .then((formData) => {
+        console.log(formData);
+        alert('Регистрация прошла успешно!');
+        form.reset();
+      })
+      .catch((error) => {
+        alert('an error has occurred, the status' + error.message);
+      });
+  }
+});
