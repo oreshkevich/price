@@ -142,6 +142,9 @@ function checkForm(meaning) {
   buttonSubmit.textContent = '';
   // buttonSubmit.classList.add('icons-btn');
   buttonSubmit.disabled = meaning;
+  cont.disabled = meaning;
+  percent.disabled = meaning;
+  month.disabled = meaning;
 }
 function checkFormRemove() {
   // buttonSubmit.classList.remove('icons-btn');
