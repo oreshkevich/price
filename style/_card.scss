@@ -31,7 +31,6 @@
 .car__title {
   max-width: 753px;
   font-family: 'Nekst-Black';
-  font-style: normal;
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
@@ -62,14 +61,13 @@
 
 .form__count {
   font-family: 'Gilroy';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   color: #575757;
 }
 
-.form__img {
+.form__rub {
   margin-right: 24px;
 }
 
@@ -88,7 +86,6 @@
   position: relative;
   padding-left: 24px;
   font-family: 'Nekst-Black';
-  font-style: normal;
   font-weight: 900;
   font-size: 30px;
   line-height: 36px;
@@ -114,13 +111,13 @@ input {
 //   color: #b5b7bc;
 // }
 
-.form__span {
+.form__rub {
   font-family: 'Nekst-Black';
-  // font-weight: 900;
-  // font-size: 20px;
-  // line-height: 120%;
-  // text-align: right;
-  // color: #575757;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: right;
+  color: #575757;
 }
 
 .form__item {
@@ -131,11 +128,11 @@ input {
 }
 
 .form__span_month {
-  margin-right: 16px;
+  margin-right: 19px;
+  font-family: 'Nekst-Black';
   font-weight: 900;
   font-size: 30px;
   line-height: 36px;
-  text-align: right;
   color: #575757;
 }
 .form__span_percent {
@@ -148,7 +145,6 @@ input {
 }
 .sum__item {
   font-family: 'Gilroy';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -158,7 +154,6 @@ input {
 .sum__span {
   padding-top: 8px;
   font-family: 'Nekst-Black';
-  font-style: normal;
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
@@ -180,7 +175,6 @@ input {
   // border: 1px solid #ff9514;
   text-align: center;
   font-family: 'Nekst-Black';
-  font-style: normal;
   font-weight: 900;
   font-size: 30px;
   line-height: 36px;

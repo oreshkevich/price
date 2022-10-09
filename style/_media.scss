@@ -1,15 +1,139 @@
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
   .container {
-    max-width: 850px;
+    max-width: 1054px;
+  }
+  .form__wrap {
+    min-width: 320px;
+  }
+  .button-market {
+    padding: 15px 46px;
+  }
+  .progress {
+    width: 300px;
+  }
+  // .sum__wrap {
+  //   min-width: 300px;
+  // }
+  .form__result {
+    padding-left: 29px;
+  }
+  .form__result_input {
+    padding-left: 23px;
+  }
+  .form__span_month {
+    margin-right: 23px;
+  }
+  .sum__wrap {
+    min-width: 352px;
+  }
+  .button-market {
+    padding: 16px 37px;
   }
 }
-@media (max-width: 1120px) {
+@media (max-width: 1119px) {
   .container {
-    max-width: 850px;
+    max-width: 726px;
+  }
+  .car__form {
+    flex-direction: column;
+  }
+  .car__sum {
+    flex-wrap: wrap;
+  }
+  .car__form {
+    padding-top: 43px;
+  }
+  .form__wrap {
+    margin-bottom: 39px;
+  }
+  .form__output {
+    max-width: 698px;
+  }
+  .car__form {
+    padding-bottom: 6px;
+  }
+  .sum__wrap {
+    // min-width: 369px;
+    min-width: 275px;
+    margin-bottom: 33px;
+  }
+  .button-market {
+    padding: 16px 50px;
+  }
+  .form__span_percent {
+    margin-right: 27px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
-    max-width: 850px;
+    max-width: 310px;
+  }
+  .car__title {
+    // max-width: 753px;
+    font-size: 34px;
+  }
+  .form__result {
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .sum__span {
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .sum__item {
+    font-size: 14px;
+    line-height: 136%;
+  }
+  .button-market {
+    padding: 16px 42px;
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .form__count {
+    font-size: 14px;
+    line-height: 136%;
+  }
+  .form__rub {
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .car__form {
+    padding-top: 32px;
+  }
+  .form__output {
+    margin-top: 4px;
+  }
+  .form__output {
+    max-width: 285px;
+  }
+  .form__wrap {
+    margin-bottom: 21px;
+  }
+  .form__result_input {
+    max-width: 118px;
+  }
+  .form__span_month {
+    font-size: 22px;
+    line-height: 20px;
+  }
+
+  .car__form {
+    padding-bottom: 0px;
+  }
+  .sum__span {
+    padding-top: 3px;
+  }
+  .sum__wrap {
+    margin-bottom: 26px;
+  }
+  .button-market {
+    padding: 19px 48px;
+  }
+  .progress {
+    width: 261px;
   }
 }
+
+// @media (min-width: 992px) and (max-width: 1440px) {
+
+//   ... }
