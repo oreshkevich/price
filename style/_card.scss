@@ -40,7 +40,7 @@
 
 .car__form {
   padding-top: 32px;
-  padding-bottom: 44px;
+  padding-bottom: 51px;
   display: flex;
   justify-content: space-between;
 }
@@ -82,7 +82,7 @@
 .form__result {
   max-width: 148px;
   background-color: rgba(0, 0, 0, 0);
-  margin-left: 24px;
+  // margin-left: 24px;
   width: 100%;
   border: 0px solid #ced4da;
   position: relative;
@@ -94,7 +94,9 @@
   line-height: 36px;
   color: #575757;
 }
-
+.form__result_max {
+  max-width: 168px;
+}
 input {
   outline: none;
 }
@@ -128,7 +130,7 @@ input {
   text-align: center;
 }
 
-.form__span_percent {
+.form__span_month {
   margin-right: 16px;
   font-weight: 900;
   font-size: 30px;
@@ -136,7 +138,14 @@ input {
   text-align: right;
   color: #575757;
 }
-
+.form__span_percent {
+  margin-right: 22px;
+  color: #575757;
+  font-family: 'Nekst-Black';
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 120%;
+}
 .sum__item {
   font-family: 'Gilroy';
   font-style: normal;
@@ -165,7 +174,9 @@ input {
   display: block;
 }
 .button-market {
-  padding: 1.25rem 2.5rem;
+  margin-left: 4px;
+  margin-top: 9px;
+  padding: 17px 92px;
   // border: 1px solid #ff9514;
   text-align: center;
   font-family: 'Nekst-Black';

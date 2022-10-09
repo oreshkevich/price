@@ -22,22 +22,44 @@ function progressColor(progress, inputCont) {
     fun1(progress, inputCont);
   });
 }
+
+progressColor(cont, inputCount);
+
+inputCount.addEventListener('blur', function () {
+  const value = this.value;
+  console.log(value);
+  if (value !== '') {
+    console.log(value);
+    if (value < 1000000 || value > 6000000) this.value = 1000000;
+  }
+});
+
 function progressColorPercent(progress, inputCont) {
   progress.addEventListener('input', function () {
     const value = this.value;
     const percentValue = ((value - 10) * 100) / 50;
     let countPercent;
+    let inputCountPercent;
+    let countReplay;
     this.style.background = `linear-gradient(to right, #ff9514  0%, #ff9514  ${percentValue}%, #fff ${percentValue}%, white 100%)`;
     funPercent(progress, inputCont);
     if (count) {
       countPercent = count;
     } else {
-      countPercent = inputCount.value;
+      countReplay = inputCount.value;
+      countPercent = +countReplay.replace(/\s/g, '');
     }
-    let inputCountPercent = (+countPercent.replace(/\s/g, '') * value) / 100;
+    console.log(countPercent);
+    console.log(!isNaN(countPercent));
+    if (isNaN(countPercent)) {
+      inputCountPercent = 100000;
+    } else {
+      inputCountPercent = (countPercent * value) / 100;
+    }
     inputPercent.value = Math.round(inputCountPercent);
   });
 }
+
 function progressColorMonth(progress, inputCont) {
   progress.addEventListener('input', function () {
     const value = this.value;
@@ -47,10 +69,11 @@ function progressColorMonth(progress, inputCont) {
   });
 }
 
-progressColor(cont, inputCount);
 progressColorPercent(percent, formSpanJs);
 progressColorMonth(month, inputMonth);
 
-inputCount.addEventListener('keydown', function pressed(e) {
-  e.target.value = e.target.value.replace(/[^0-9+]/g, '');
+inputCount.addEventListener('keydown', function pressed(event) {
+  if (event.key.length === 1 && /\D/.test(event.key)) {
+    event.preventDefault();
+  }
 });
