@@ -136,8 +136,20 @@ let emptyField = false;
 const form = document.querySelector('.car__cost');
 const formUrl =
   'https://test-form-a53f8-default-rtdb.europe-west1.firebasedatabase.app/men.json';
+const buttonSubmit = document.getElementById('btn-place-order');
+
+function checkForm(meaning) {
+  buttonSubmit.textContent = '';
+  // buttonSubmit.classList.add('icons-btn');
+  buttonSubmit.disabled = meaning;
+}
+function checkFormRemove() {
+  // buttonSubmit.classList.remove('icons-btn');
+  buttonSubmit.textContent = 'Оставить заявку';
+}
 
 form.addEventListener('submit', (event) => {
+  checkForm(true);
   const formData = {};
   event.preventDefault();
 
@@ -169,7 +181,10 @@ form.addEventListener('submit', (event) => {
       })
       .then((formData) => {
         console.log(formData);
-        alert('Регистрация прошла успешно!');
+        checkForm(false);
+        checkFormRemove();
+        // alert('Регистрация прошла успешно!');
+
         // form.reset();
       })
       .catch((error) => {

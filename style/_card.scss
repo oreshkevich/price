@@ -196,9 +196,6 @@ input {
 .button-market:active {
   background: #575757;
 }
-.button-market:disabled {
-  background: rgba(255, 149, 20, 0.4);
-}
 
 .sum__wrap {
   min-width: 427px;
@@ -250,4 +247,13 @@ input[type='range']::-webkit-slider-thumb:active {
   font-size: 54px;
   line-height: 90%;
   color: #333;
+}
+
+.button-market:disabled {
+  // background: rgba(255, 149, 20, 0.4);
+  background: rgba(255, 149, 20, 0.4) url('../img/loding.svg');
+  width: 426px;
+  height: 68px;
+  background-position: center;
+  background-repeat: no-repeat;
 }

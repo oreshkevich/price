@@ -2,6 +2,10 @@
   .container {
     max-width: 1054px;
   }
+  .button-market:disabled {
+    width: 320px;
+    height: 68px;
+  }
   .sum__item-rub::after {
     left: 67%;
   }
@@ -43,6 +47,10 @@
   .container {
     max-width: 726px;
   }
+  .button-market:disabled {
+    width: 345px;
+    height: 68px;
+  }
   .car__form {
     flex-direction: column;
   }
@@ -81,6 +89,10 @@
 @media (max-width: 767px) {
   .container {
     max-width: 310px;
+  }
+  .button-market:disabled {
+    width: 280px;
+    height: 60px;
   }
   .car__title {
     // max-width: 753px;
