@@ -78,7 +78,7 @@
 }
 
 .form__result {
-  max-width: 148px;
+  max-width: 152px;
   background-color: rgba(0, 0, 0, 0);
   // margin-left: 24px;
   width: 100%;
@@ -159,8 +159,9 @@ input {
   line-height: 90%;
   color: #333333;
 }
+
 .sum__rub_month {
-  margin-left: -66px;
+  margin-left: -38px;
 }
 // .sum__span {
 //   margin-left: -49px;
@@ -213,10 +214,37 @@ input[type='range']::-webkit-slider-thumb:active {
 }
 
 .sum__total {
-  max-width: 258px;
+  max-width: 422px;
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
   border: 0px solid #ced4da;
+  font-family: 'Nekst-Black';
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 90%;
+  color: #333;
+}
+.sum__item-span {
+  position: relative;
+}
+.sum__item-label::after {
+  content: '₽';
+  position: absolute;
+  top: 5px;
+  left: 53%;
+  color: #b5b7bc;
+  font-family: 'Nekst-Black';
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 90%;
+  color: #333;
+}
+.sum__item-rub::after {
+  content: '₽';
+  position: absolute;
+  top: 5px;
+  left: 55%;
+  color: #b5b7bc;
   font-family: 'Nekst-Black';
   font-weight: 900;
   font-size: 54px;

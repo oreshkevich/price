@@ -2,6 +2,9 @@
   .container {
     max-width: 1054px;
   }
+  .sum__item-rub::after {
+    left: 67%;
+  }
   .form__wrap {
     min-width: 320px;
   }
@@ -10,6 +13,9 @@
   }
   .progress {
     width: 300px;
+  }
+  .sum__total {
+    max-width: 336px;
   }
   // .sum__wrap {
   //   min-width: 300px;
@@ -65,6 +71,12 @@
   .form__span_percent {
     margin-right: 27px;
   }
+  .sum__item-rub::after {
+    left: 72%;
+  }
+  .sum__item-label::after {
+    left: 58%;
+  }
 }
 @media (max-width: 767px) {
   .container {
@@ -84,7 +96,7 @@
     line-height: 20px;
   }
   .sum__total {
-    max-width: 113px;
+    max-width: 173px;
   }
   .sum__rub_month {
     margin-left: -45px;
@@ -140,6 +152,16 @@
   }
   .progress {
     width: 261px;
+  }
+  .sum__item-rub::after {
+    left: 38%;
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .sum__item-label::after {
+    left: 35%;
+    font-size: 22px;
+    line-height: 20px;
   }
 }
 

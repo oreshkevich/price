@@ -34,7 +34,7 @@
               <label for="input-percent" class="form__count">Первоначальный взнос</label>
               <div class="form__output">
                 <div class="form__item">
-                  <input type="text" maxlength="7" value="420 000" class="form__result form__result_input"
+                  <input type="text" maxlength="6" value="420 000" class="form__result form__result_input"
                     name="initail_payment" id="input-percent">
 
                   <span class="form__rub">
@@ -69,8 +69,9 @@
               <div class="sum__item">
                 <p class="sum__item-text">Сумма договора лизинга</p>
                 <div class="sum__item-span">
-                  <input type="text" class="sum__total" value="4 467 313" name="total_sum">
-                  <span class="sum__span sum__rub">₽</span>
+                  <input type="text" class="sum__total" value="4 467 313" name="total_sum" id="total-sum">
+                  <label class="sum__item-rub" for="total-sum"></label>
+                  <!-- <span class="sum__span sum__rub">₽</span> -->
                 </div>
 
               </div>
@@ -79,8 +80,9 @@
               <div class="sum__item">
                 <p class="sum__text">Ежемесячный платеж от</p>
                 <div class="sum__item-span">
-                  <input type="text" class="sum__total" value="114 455" name="monthly_payment_from">
-                  <span class="sum__span sum__rub_month">₽</span>
+                  <input type="text" class="sum__total" value="114 455" name="monthly_payment_from"
+                    id="monthly-payment"><label class="sum__item-label" for="monthly-payment"></label>
+                  <!-- <span class="sum__span sum__rub_month">₽</span> -->
                 </div>
 
               </div>
