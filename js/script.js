@@ -13,8 +13,6 @@ const inputCountNumber = +inputCount.value.replace(/\s/g, '');
 const inputPercentNumber = +inputPercent.value.replace(/\s/g, '');
 const inputMonthNumber = +inputMonth.value.replace(/\s/g, '');
 
-console.log(monthlyPayment);
-
 function fun1(cont, inputCont) {
   inputCont.value = cont.value;
 }
@@ -33,7 +31,6 @@ function sumMonth(inputCountNumber, inputPercentNumber, inputMonthNumber) {
     monthlyPaymentNumber = monthlyPayment.value = monthPay;
   } else {
     monthlyPaymentNumber = monthlyPayment.value = 1;
-    alert('Слишком много вы столько не заработаете !!!');
   }
 }
 
@@ -53,7 +50,7 @@ function progressColor(progress, inputCont) {
     const percentValue = ((value - 1000000) * 100) / 5000000;
     this.style.background = `linear-gradient(to right, #ff9514  0%, #ff9514  ${percentValue}%, #fff ${percentValue}%, white 100%)`;
     fun1(progress, inputCont);
-
+    inputPercent.value = Math.round(value / 10);
     sumMonth(value, inputPercentNumber, inputMonthNumber);
     sumLeasing(inputPercentNumber, inputMonthNumber);
   });
@@ -63,16 +60,46 @@ progressColor(cont, inputCount);
 
 inputCount.addEventListener('blur', function () {
   const value = this.value;
-  if (value !== '') {
-    console.log(value);
-    if (value < 1000000 || value > 6000000) this.value = 1000000;
+  let valueNumber = +value.replace(/\s/g, '');
+  if (valueNumber !== '') {
+    if (valueNumber < 1000000 || valueNumber > 6000000) {
+      let valueNumber = (this.value = 1000000);
+      inputPercent.value = Math.round(valueNumber / 10);
+      sumMonth(valueNumber, inputPercentNumber, inputMonthNumber);
+      sumLeasing(inputPercentNumber, inputMonthNumber);
+    } else {
+      inputPercent.value = Math.round(valueNumber / 10);
+      sumMonth(valueNumber, inputPercentNumber, inputMonthNumber);
+      sumLeasing(inputPercentNumber, inputMonthNumber);
+    }
   }
 });
 inputPercent.addEventListener('blur', function () {
   const value = this.value;
+  let valueNumber = +value.replace(/\s/g, '');
   if (value !== '') {
-    console.log(value);
-    if (value < 100000 || value > 600000) this.value = 1000000;
+    if (value < 100000 || value > 600000) {
+      let valueNumber = (this.value = 100000);
+      sumMonth(inputCountNumber, valueNumber, inputMonthNumber);
+      sumLeasing(inputPercentNumber, valueNumber);
+    } else {
+      sumMonth(inputCountNumber, valueNumber, inputMonthNumber);
+      sumLeasing(inputPercentNumber, valueNumber);
+    }
+  }
+});
+inputMonth.addEventListener('blur', function () {
+  const value = this.value;
+  let valueNumber = +value.replace(/\s/g, '');
+  if (value !== '') {
+    if (value < 1 || value > 60) {
+      let valueNumber = (this.value = 1);
+      sumMonth(inputCountNumber, inputPercentNumber, valueNumber);
+      sumLeasing(inputPercentNumber, valueNumber);
+    } else {
+      sumMonth(inputCountNumber, inputPercentNumber, valueNumber);
+      sumLeasing(inputPercentNumber, valueNumber);
+    }
   }
 });
 
@@ -91,8 +118,6 @@ function progressColorPercent(progress, inputCont) {
       countReplay = inputCount.value;
       countPercent = +countReplay.replace(/\s/g, '');
     }
-    console.log(countPercent);
-    console.log(!isNaN(countPercent));
     if (isNaN(countPercent)) {
       inputCountPercent = 100000;
     } else {
