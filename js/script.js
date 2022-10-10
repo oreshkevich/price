@@ -9,17 +9,19 @@ const totalSum = document.getElementById('total-sum');
 const formSpanJs = document.querySelector('.form__span-js');
 const sumItemRub = document.querySelector('.sum__item-rub');
 const sumItemLabel = document.querySelector('.sum__item-label');
-const inputCountNumber = +inputCount.value.replace(/\s/g, '');
-const inputPercentNumber = +inputPercent.value.replace(/\s/g, '');
-const inputMonthNumber = +inputMonth.value.replace(/\s/g, '');
+let inputCountNumber = +inputCount.value.replace(/\s/g, '');
+let inputPercentNumber = +inputPercent.value.replace(/\s/g, '');
+let inputMonthNumber = +inputMonth.value.replace(/\s/g, '');
+let inputMonthlyPayment = +monthlyPayment.value.replace(/\s/g, '');
+let getPercentValue;
 
 function fun1(cont, inputCont) {
   inputCont.value = cont.value;
 }
+
 function funPercent(cont) {
-  formSpanJs.textContent = cont.value;
+  formSpanJs.textContent = cont;
 }
-let monthlyPaymentNumber;
 
 function sumMonth(inputCountNumber, inputPercentNumber, inputMonthNumber) {
   const monthPay = Math.round(
@@ -28,15 +30,15 @@ function sumMonth(inputCountNumber, inputPercentNumber, inputMonthNumber) {
         (Math.pow(1 + 0.035, inputMonthNumber) - 1))
   );
   if (monthPay >= 0) {
-    monthlyPaymentNumber = monthlyPayment.value = monthPay;
+    inputMonthlyPayment = monthlyPayment.value = monthPay;
   } else {
-    monthlyPaymentNumber = monthlyPayment.value = 1;
+    inputMonthlyPayment = monthlyPayment.value = 1;
   }
 }
 
 function sumLeasing(inputPercentNumber, inputMonthNumber) {
   const monthPayTotal = Math.round(
-    inputPercentNumber + inputMonthNumber * monthlyPaymentNumber
+    inputPercentNumber + inputMonthNumber * inputMonthlyPayment
   );
   sumItemRub.style.display = 'none';
   totalSum.value = `${monthPayTotal} ₽`;
@@ -45,12 +47,14 @@ function sumLeasing(inputPercentNumber, inputMonthNumber) {
 let count = 0;
 function progressColor(progress, inputCont) {
   progress.addEventListener('input', function () {
-    const value = this.value;
-    count = value;
+    const value = +this.value;
+    inputCountNumber = value;
     const percentValue = ((value - 1000000) * 100) / 5000000;
     this.style.background = `linear-gradient(to right, #ff9514  0%, #ff9514  ${percentValue}%, #fff ${percentValue}%, white 100%)`;
     fun1(progress, inputCont);
-    inputPercent.value = Math.round(value / 10);
+    inputPercentNumber = inputPercent.value = Math.round(value / 10);
+    getPercentValue = Math.round((inputPercentNumber * 100) / inputCountNumber);
+    funPercent(getPercentValue);
     sumMonth(value, inputPercentNumber, inputMonthNumber);
     sumLeasing(inputPercentNumber, inputMonthNumber);
   });
@@ -64,11 +68,21 @@ inputCount.addEventListener('blur', function () {
   if (valueNumber !== '') {
     if (valueNumber < 1000000 || valueNumber > 6000000) {
       let valueNumber = (this.value = 1000000);
-      inputPercent.value = Math.round(valueNumber / 10);
+      inputCountNumber = valueNumber;
+      inputPercentNumber = inputPercent.value = Math.round(valueNumber / 10);
+      getPercentValue = Math.round(
+        (inputPercentNumber * 100) / inputCountNumber
+      );
+      funPercent(getPercentValue);
       sumMonth(valueNumber, inputPercentNumber, inputMonthNumber);
       sumLeasing(inputPercentNumber, inputMonthNumber);
     } else {
-      inputPercent.value = Math.round(valueNumber / 10);
+      inputCountNumber = valueNumber;
+      inputPercentNumber = inputPercent.value = Math.round(valueNumber / 10);
+      getPercentValue = Math.round(
+        (inputPercentNumber * 100) / inputCountNumber
+      );
+      funPercent(getPercentValue);
       sumMonth(valueNumber, inputPercentNumber, inputMonthNumber);
       sumLeasing(inputPercentNumber, inputMonthNumber);
     }
@@ -78,13 +92,20 @@ inputPercent.addEventListener('blur', function () {
   const value = this.value;
   let valueNumber = +value.replace(/\s/g, '');
   if (value !== '') {
-    if (value < 100000 || value > 600000) {
-      let valueNumber = (this.value = 100000);
+    let minPercent = Math.round((valueNumber * 100) / inputCountNumber);
+    if (minPercent < 10 || minPercent > 60) {
+      let valueNumber = (this.value = inputCountNumber / 10);
+      inputPercentNumber = valueNumber;
+      getPercentValue = Math.round((valueNumber * 100) / inputCountNumber);
+      funPercent(getPercentValue);
       sumMonth(inputCountNumber, valueNumber, inputMonthNumber);
-      sumLeasing(inputPercentNumber, valueNumber);
+      sumLeasing(valueNumber, inputMonthNumber);
     } else {
+      inputPercentNumber = valueNumber;
+      getPercentValue = Math.round((valueNumber * 100) / inputCountNumber);
+      funPercent(getPercentValue);
       sumMonth(inputCountNumber, valueNumber, inputMonthNumber);
-      sumLeasing(inputPercentNumber, valueNumber);
+      sumLeasing(valueNumber, inputMonthNumber);
     }
   }
 });
@@ -94,9 +115,11 @@ inputMonth.addEventListener('blur', function () {
   if (value !== '') {
     if (value < 1 || value > 60) {
       let valueNumber = (this.value = 1);
+      inputMonthNumber = valueNumber;
       sumMonth(inputCountNumber, inputPercentNumber, valueNumber);
       sumLeasing(inputPercentNumber, valueNumber);
     } else {
+      inputMonthNumber = valueNumber;
       sumMonth(inputCountNumber, inputPercentNumber, valueNumber);
       sumLeasing(inputPercentNumber, valueNumber);
     }
@@ -105,34 +128,23 @@ inputMonth.addEventListener('blur', function () {
 
 function progressColorPercent(progress, inputCont) {
   progress.addEventListener('input', function () {
-    const value = this.value;
+    const value = +this.value;
     const percentValue = ((value - 10) * 100) / 50;
-    let countPercent;
     let inputCountPercent;
-    let countReplay;
     this.style.background = `linear-gradient(to right, #ff9514  0%, #ff9514  ${percentValue}%, #fff ${percentValue}%, white 100%)`;
-    funPercent(progress, inputCont);
-    if (count) {
-      countPercent = count;
-    } else {
-      countReplay = inputCount.value;
-      countPercent = +countReplay.replace(/\s/g, '');
-    }
-    if (isNaN(countPercent)) {
-      inputCountPercent = 100000;
-    } else {
-      inputCountPercent = (countPercent * value) / 100;
-    }
-    inputPercent.value = Math.round(inputCountPercent);
+    funPercent(progress.value);
+    inputCountPercent = (inputCountNumber * value) / 100;
+    inputPercentNumber = inputPercent.value = Math.round(inputCountPercent);
 
-    sumMonth(inputCountNumber, inputPercent.value, inputMonthNumber);
-    sumLeasing(inputPercentNumber, inputPercent.value);
+    sumMonth(inputCountNumber, inputPercentNumber, inputMonthNumber);
+    sumLeasing(inputPercentNumber, inputMonthNumber);
   });
 }
 
 function progressColorMonth(progress, inputCont) {
   progress.addEventListener('input', function () {
-    const value = this.value;
+    const value = +this.value;
+    inputMonthNumber = value;
     const percentValue = ((value - 1) * 100) / 59;
     this.style.background = `linear-gradient(to right, #ff9514  0%, #ff9514  ${percentValue}%, #fff ${percentValue}%, white 100%)`;
     fun1(progress, inputCont);
